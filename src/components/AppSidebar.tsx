@@ -1,10 +1,10 @@
-import { Menu } from "lucide-react";
+import { Menu, Calendar, Plus, Settings, User } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
-  SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarGroupContent,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
