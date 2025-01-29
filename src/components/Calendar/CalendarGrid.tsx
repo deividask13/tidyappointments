@@ -27,36 +27,36 @@ export const CalendarGrid = ({ currentDate }: CalendarGridProps) => {
   const emptyDays = Array.from({ length: startingDay }, (_, i) => i);
 
   return (
-    <div className="grid grid-cols-7 gap-px bg-gray-200 flex-1 min-w-[800px] sm:min-w-0">
+    <div className="grid grid-cols-7 gap-px bg-gray-200 w-full overflow-x-auto">
       {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-        <div key={day} className="bg-white p-2 sm:p-4 text-center text-sm font-medium text-gray-500">
+        <div key={day} className="bg-white p-1 md:p-2 text-center text-xs md:text-sm font-medium text-gray-500">
           <span className="hidden sm:inline">{day}</span>
           <span className="sm:hidden">{day.charAt(0)}</span>
         </div>
       ))}
       
       {emptyDays.map((_, index) => (
-        <div key={`empty-${index}`} className="bg-white p-2 sm:p-4" />
+        <div key={`empty-${index}`} className="bg-white p-1 md:p-2" />
       ))}
       
       {days.map((day) => (
         <div
           key={day}
-          className="bg-white p-2 sm:p-4 min-h-[80px] sm:min-h-[100px] relative group hover:bg-gray-50 transition-colors"
+          className="bg-white p-1 md:p-2 min-h-[60px] md:min-h-[100px] relative group hover:bg-gray-50 transition-colors"
         >
-          <span className="text-sm">{day}</span>
+          <span className="text-xs md:text-sm">{day}</span>
           <Dialog>
             <DialogTrigger asChild>
               <Button
                 variant="ghost"
                 size="icon"
-                className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute top-1 right-1 md:top-2 md:right-2 opacity-0 group-hover:opacity-100 transition-opacity h-6 w-6 md:h-8 md:w-8"
                 onClick={() => setSelectedDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), day))}
               >
-                <Plus className="h-4 w-4" />
+                <Plus className="h-3 w-3 md:h-4 md:w-4" />
               </Button>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
                 <DialogTitle>Add Appointment</DialogTitle>
                 <DialogDescription>Create a new appointment for your calendar.</DialogDescription>
