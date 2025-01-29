@@ -19,9 +19,9 @@ export const CalendarHeader = ({
   onViewChange,
 }: CalendarHeaderProps) => {
   return (
-    <div className="flex items-center justify-between p-4 border-b">
-      <div className="flex items-center gap-2">
-        <Button variant="outline" onClick={onToday}>
+    <div className="flex flex-col sm:flex-row items-center justify-between p-2 sm:p-4 border-b gap-2">
+      <div className="flex items-center gap-2 w-full sm:w-auto">
+        <Button variant="outline" onClick={onToday} size="sm" className="whitespace-nowrap">
           Today
         </Button>
         <div className="flex items-center gap-1">
@@ -32,24 +32,27 @@ export const CalendarHeader = ({
             <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
-        <h2 className="text-xl font-semibold">
+        <h2 className="text-lg sm:text-xl font-semibold whitespace-nowrap">
           {currentDate.toLocaleString('default', { month: 'long', year: 'numeric' })}
         </h2>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 w-full sm:w-auto justify-center sm:justify-end">
         <Button 
+          size="sm"
           variant={view === "month" ? "default" : "outline"}
           onClick={() => onViewChange("month")}
         >
           Month
         </Button>
         <Button 
+          size="sm"
           variant={view === "week" ? "default" : "outline"}
           onClick={() => onViewChange("week")}
         >
           Week
         </Button>
         <Button 
+          size="sm"
           variant={view === "day" ? "default" : "outline"}
           onClick={() => onViewChange("day")}
         >

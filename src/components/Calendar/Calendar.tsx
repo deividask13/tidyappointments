@@ -23,7 +23,7 @@ export const Calendar = () => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-white rounded-lg shadow-sm border animate-fade-in">
+    <div className="flex flex-col h-full bg-white rounded-lg shadow-sm border animate-fade-in overflow-hidden">
       <CalendarHeader
         currentDate={currentDate}
         onPrevious={handlePrevious}
@@ -32,7 +32,7 @@ export const Calendar = () => {
         view={view}
         onViewChange={setView}
       />
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 overflow-auto min-h-[500px] md:min-h-0">
         {view === "month" && <CalendarGrid currentDate={currentDate} />}
         {view === "week" && <CalendarWeekView currentDate={currentDate} />}
         {view === "day" && <CalendarDayView currentDate={currentDate} />}

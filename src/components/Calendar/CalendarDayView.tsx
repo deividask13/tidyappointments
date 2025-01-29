@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { AppointmentForm } from "../Appointment/AppointmentForm";
@@ -17,7 +17,7 @@ export const CalendarDayView = ({ currentDate }: CalendarDayViewProps) => {
         {hours.map((hour) => (
           <div
             key={hour}
-            className="bg-white p-4 min-h-[100px] relative group hover:bg-gray-50 transition-colors"
+            className="bg-white p-2 sm:p-4 min-h-[80px] relative group hover:bg-gray-50 transition-colors"
           >
             <span className="text-sm text-gray-500">
               {format(new Date().setHours(hour), "h:mm a")}
@@ -35,6 +35,7 @@ export const CalendarDayView = ({ currentDate }: CalendarDayViewProps) => {
               <DialogContent>
                 <DialogHeader>
                   <DialogTitle>Add Appointment</DialogTitle>
+                  <DialogDescription>Create a new appointment for your calendar.</DialogDescription>
                 </DialogHeader>
                 <AppointmentForm selectedDate={currentDate} />
               </DialogContent>

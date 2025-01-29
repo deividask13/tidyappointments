@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { AppointmentForm } from "../Appointment/AppointmentForm";
@@ -27,21 +27,22 @@ export const CalendarGrid = ({ currentDate }: CalendarGridProps) => {
   const emptyDays = Array.from({ length: startingDay }, (_, i) => i);
 
   return (
-    <div className="grid grid-cols-7 gap-px bg-gray-200 flex-1">
+    <div className="grid grid-cols-7 gap-px bg-gray-200 flex-1 min-w-[800px] sm:min-w-0">
       {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-        <div key={day} className="bg-white p-4 text-center text-sm font-medium text-gray-500">
-          {day}
+        <div key={day} className="bg-white p-2 sm:p-4 text-center text-sm font-medium text-gray-500">
+          <span className="hidden sm:inline">{day}</span>
+          <span className="sm:hidden">{day.charAt(0)}</span>
         </div>
       ))}
       
       {emptyDays.map((_, index) => (
-        <div key={`empty-${index}`} className="bg-white p-4" />
+        <div key={`empty-${index}`} className="bg-white p-2 sm:p-4" />
       ))}
       
       {days.map((day) => (
         <div
           key={day}
-          className="bg-white p-4 min-h-[100px] relative group"
+          className="bg-white p-2 sm:p-4 min-h-[80px] sm:min-h-[100px] relative group hover:bg-gray-50 transition-colors"
         >
           <span className="text-sm">{day}</span>
           <Dialog>
@@ -58,6 +59,7 @@ export const CalendarGrid = ({ currentDate }: CalendarGridProps) => {
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Add Appointment</DialogTitle>
+                <DialogDescription>Create a new appointment for your calendar.</DialogDescription>
               </DialogHeader>
               <AppointmentForm selectedDate={selectedDate} />
             </DialogContent>
