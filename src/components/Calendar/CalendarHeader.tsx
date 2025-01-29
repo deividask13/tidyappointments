@@ -3,16 +3,20 @@ import { Button } from "@/components/ui/button";
 
 interface CalendarHeaderProps {
   currentDate: Date;
-  onPrevMonth: () => void;
-  onNextMonth: () => void;
+  onPrevious: () => void;
+  onNext: () => void;
   onToday: () => void;
+  view: "month" | "week" | "day";
+  onViewChange: (view: "month" | "week" | "day") => void;
 }
 
 export const CalendarHeader = ({
   currentDate,
-  onPrevMonth,
-  onNextMonth,
+  onPrevious,
+  onNext,
   onToday,
+  view,
+  onViewChange,
 }: CalendarHeaderProps) => {
   return (
     <div className="flex items-center justify-between p-4 border-b">
@@ -21,10 +25,10 @@ export const CalendarHeader = ({
           Today
         </Button>
         <div className="flex items-center gap-1">
-          <Button variant="ghost" size="icon" onClick={onPrevMonth}>
+          <Button variant="ghost" size="icon" onClick={onPrevious}>
             <ChevronLeft className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="icon" onClick={onNextMonth}>
+          <Button variant="ghost" size="icon" onClick={onNext}>
             <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
@@ -33,9 +37,24 @@ export const CalendarHeader = ({
         </h2>
       </div>
       <div className="flex items-center gap-2">
-        <Button variant="outline">Month</Button>
-        <Button variant="outline">Week</Button>
-        <Button variant="outline">Day</Button>
+        <Button 
+          variant={view === "month" ? "default" : "outline"}
+          onClick={() => onViewChange("month")}
+        >
+          Month
+        </Button>
+        <Button 
+          variant={view === "week" ? "default" : "outline"}
+          onClick={() => onViewChange("week")}
+        >
+          Week
+        </Button>
+        <Button 
+          variant={view === "day" ? "default" : "outline"}
+          onClick={() => onViewChange("day")}
+        >
+          Day
+        </Button>
       </div>
     </div>
   );

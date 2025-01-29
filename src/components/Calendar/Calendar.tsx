@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { CalendarHeader } from "./CalendarHeader";
 import { CalendarGrid } from "./CalendarGrid";
+import { CalendarDayView } from "./CalendarDayView";
+import { CalendarWeekView } from "./CalendarWeekView";
+
+type ViewType = "month" | "week" | "day";
 
 export const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [view, setView] = useState<ViewType>("month");
 
-  const handlePrevMonth = () => {
+  const handlePrevious = () => {
     setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1));
   };
 
-  const handleNextMonth = () => {
+  const handleNext = () => {
     setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1));
   };
 
@@ -18,14 +23,20 @@ export const Calendar = () => {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full bg-white rounded-lg shadow-sm border animate-fade-in">
       <CalendarHeader
         currentDate={currentDate}
-        onPrevMonth={handlePrevMonth}
-        onNextMonth={handleNextMonth}
+        onPrevious={handlePrevious}
+        onNext={handleNext}
         onToday={handleToday}
+        view={view}
+        onViewChange={setView}
       />
-      <CalendarGrid currentDate={currentDate} />
+      <div className="flex-1 overflow-auto">
+        {view === "month" && <CalendarGrid currentDate={currentDate} />}
+        {view === "week" && <CalendarWeekView currentDate={currentDate} />}
+        {view === "day" && <CalendarDayView currentDate={currentDate} />}
+      </div>
     </div>
   );
 };

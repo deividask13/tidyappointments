@@ -5,10 +5,12 @@ import { AppSidebar } from "@/components/AppSidebar";
 const Index = () => {
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full">
+      <div className="min-h-screen flex w-full bg-gray-50">
         <AppSidebar />
-        <main className="flex-1 overflow-auto">
-          <Calendar />
+        <main className="flex-1 p-6 overflow-hidden">
+          <div className="h-full max-w-7xl mx-auto">
+            <Calendar />
+          </div>
         </main>
       </div>
     </SidebarProvider>
