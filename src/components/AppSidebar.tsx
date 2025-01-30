@@ -38,22 +38,25 @@ export function AppSidebar() {
   return (
     <>
       <div className="fixed top-4 left-4 z-50 md:hidden">
-        <SidebarTrigger className="bg-white shadow-md rounded-full p-2 hover:bg-gray-50">
-          <Menu className="h-6 w-6" />
+        <SidebarTrigger className="bg-white shadow-lg rounded-full p-2.5 hover:bg-gray-50 border border-gray-100">
+          <Menu className="h-5 w-5 text-gray-700" />
         </SidebarTrigger>
       </div>
       <Sidebar>
-        <SidebarContent>
+        <SidebarContent className="bg-white shadow-xl">
           <SidebarGroup>
-            <SidebarGroupLabel>Menu</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-gray-700 font-semibold px-4">Menu</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 {menuItems.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
-                      <a href={item.url} className="flex items-center gap-2">
-                        <item.icon className="h-4 w-4" />
-                        <span>{item.title}</span>
+                      <a 
+                        href={item.url} 
+                        className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 rounded-md transition-colors"
+                      >
+                        <item.icon className="h-5 w-5 text-gray-600" />
+                        <span className="text-gray-700 font-medium">{item.title}</span>
                       </a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
