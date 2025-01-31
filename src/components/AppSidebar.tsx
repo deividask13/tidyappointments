@@ -43,7 +43,7 @@ export function AppSidebar() {
         </SidebarTrigger>
       </div>
       <Sidebar>
-        <SidebarContent className="bg-white shadow-xl">
+        <SidebarContent className="bg-white shadow-xl border-r border-gray-100">
           <SidebarGroup>
             <SidebarGroupLabel className="text-gray-700 font-semibold px-4">Menu</SidebarGroupLabel>
             <SidebarGroupContent>
