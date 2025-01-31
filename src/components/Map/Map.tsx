@@ -18,14 +18,12 @@ const Map = () => {
 
         mapboxgl.accessToken = MAPBOX_PUBLIC_TOKEN;
         
-        map.current = new mapboxgl.Map({
-          container: mapContainer.current,
-          style: 'mapbox://styles/mapbox/light-v11',
-          projection: 'globe',
-          zoom: 1.5,
-          center: [30, 15],
-          pitch: 45,
-        });
+        const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/deividask13/cm6k137ox00gx01qrglzr2nb7',
+  center: [52.5992026, -2.139755],
+  zoom: 9
+});
 
         map.current.addControl(
           new mapboxgl.NavigationControl({
