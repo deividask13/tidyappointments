@@ -13,7 +13,7 @@ const Index = () => {
         <main className="flex-1 p-2 sm:p-4 md:p-6 overflow-hidden w-full md:ml-0">
           <div className="h-full max-w-7xl mx-auto pt-16 md:pt-0">
             <div className="grid grid-cols-1 md:grid-cols-[1fr,300px] gap-4">
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <Calendar />
                 <Map />
               </div>
