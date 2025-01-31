@@ -1,4 +1,5 @@
 import { type VariantProps } from "class-variance-authority"
+import { type TooltipContent } from "@/components/ui/tooltip"
 import { type sidebarMenuButtonVariants } from "./menu-button"
 
 export type SidebarContext = {
